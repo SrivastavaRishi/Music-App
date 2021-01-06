@@ -68,15 +68,37 @@
                 img.classList.remove("anime");
             };
 
-            play.addEventListener("click", () => {
+            play.addEventListener("click", (event) => {
                 isPlaying ? pauseMusic() : playMusic();
+                //console.log(event);
             })
 
+            document.querySelectorAll(".selected")[0].style.color = "white";
+            document.querySelectorAll(".selected")[0].style.backgroundColor = "black";
+            document.querySelectorAll(".selected")[0].style.borderRadius = '4em';
+
             const loadSong = (songs) => {
+                for(var i = 0; i<array.length;i++)
+            {
+                
+                    document.querySelectorAll(".selected")[i].style.color = "#171717";
+                    document.querySelectorAll(".selected")[i].style.backgroundColor = "#fff";
+                // console.log("yes");
+                // document.querySelectorAll(".selected")[i].addEventListener("click", function(){
+                //     console.log("hello");
+            }
+
+                
+            
                 title.textContent = songs.title;
                 artist.textContent = songs.artist;
                 music.src = "music/" + songs.name + ".mp3";
                 img.src = "img/" + songs.name + ".jpg";
+                const currentPlay = document.getElementById(songs.name);
+                currentPlay.style.color = "#fff";
+                currentPlay.style.backgroundColor = "black";
+                currentPlay.style.borderRadius = '4em';
+                //currentPlay.style.classList.add(whenPlaying);
             };
 
 
@@ -87,6 +109,10 @@
                 songIndex = (songIndex + 1) % songs.length;
                 loadSong(songs[songIndex]);
                 playMusic(); 
+                //const currentPlay = document.getElementById(songs[songIndex].name);
+                //console.log(currentPlay);
+                //currentPlay.style.color = "#171717";
+                //console.log(currentPlay);
             }
 
             const prevSong = () => {
@@ -140,7 +166,7 @@
             next.addEventListener("click", nextSong);
             prev.addEventListener("click", prevSong);
 
-            console.log(array);
+            //console.log(array);
 
             for(var i = 0; i<array.length;i++)
             {
@@ -150,7 +176,8 @@
                     loadSong(songs[index])
                     playMusic();
                     //console.log(index + " " + typeof(index));
-            });
+            }
+            );
  }
 
 
